@@ -1,0 +1,42 @@
+nav.navbar {
+  background-color: #5ad7bd;
+}
+
+#about{
+  cursor: pointer;
+}
+
+#help{
+  cursor: pointer;
+}
+
+button.circle {
+  background-color: #cccccc;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 35px;
+  height: 35px;
+  margin: 4px 2px;
+}
+
+div.display-none {
+  display: none !important;
+}
+
+div.mc-quiz {
+  background-color: #e7e6e6;
+  font-size: 2vh;
+  height: 60vh;
+  width: 70vw;
+}
+
+button.active {
+  background-color: #5ad7bd !important;
+}
+
+/*# sourceMappingURL=style.css.map */
