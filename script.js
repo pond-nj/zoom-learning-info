@@ -27,25 +27,31 @@ const chooseChoice = () => {
     }
 }
 
+const goto_form = () => {
+    window.location.href = "https://docs.google.com/forms/u/0/?tgif=d";
+}
+
 const choose_video = (page) => {
     page_no = page
     if(page_no==3){
-        document.querySelector('#show-mc').classList.toggle('display-none');
-        var inside_ol = '';
-        questions.forEach(function(question, q_no){
-            inside_ol+='<li class="mb-3">'+question[0];
-            question[1].forEach(function(choice, c_no){
-                const name= '"q-' + q_no  + '"';
-                const id= '"ans-' + q_no +"." + c_no + '"';
-                const value= '"'+choice+'"';
-                inside_ol+='<div class="form-check"><input class="form-check-input" type="radio" onclick="chooseChoice()" name=' + name + ' id=' + id + ' value='+value+'><label class="form-check-label" for='+ id + '>';
-                inside_ol+=choice;
-                inside_ol+='</label></div>';
-            })
-            inside_ol+='</li>';
-        });
-        document.querySelector('ol').innerHTML=inside_ol;
-        document.querySelector('#show-video').classList.toggle('display-none');
+        // toggle mc
+        
+        // document.querySelector('#show-mc').classList.toggle('display-none');
+        // var inside_ol = '';
+        // questions.forEach(function(question, q_no){
+        //     inside_ol+='<li class="mb-3">'+question[0];
+        //     question[1].forEach(function(choice, c_no){
+        //         const name= '"q-' + q_no  + '"';
+        //         const id= '"ans-' + q_no +"." + c_no + '"';
+        //         const value= '"'+choice+'"';
+        //         inside_ol+='<div class="form-check"><input class="form-check-input" type="radio" onclick="chooseChoice()" name=' + name + ' id=' + id + ' value='+value+'><label class="form-check-label" for='+ id + '>';
+        //         inside_ol+=choice;
+        //         inside_ol+='</label></div>';
+        //     })
+        //     inside_ol+='</li>';
+        // });
+        // document.querySelector('ol').innerHTML=inside_ol;
+        // document.querySelector('#show-video').classList.toggle('display-none');
 
     }else{
         document.querySelector('#video').setAttribute("src",url[page_no]);
@@ -59,7 +65,11 @@ const choose_video = (page) => {
 
 const next_video = () => {
     page_no++;
-    choose_video(page_no);
+    if(page_no < 3){
+        choose_video(page_no);
+    }else{
+        goto_form();
+    }
 }
 
 

@@ -1,10 +1,38 @@
 $main-color:#5ad7bd;
-$gray: #cccccc;
+$gray:#cccccc;
+$bg-quiz: #e7e6e6;
 
-nav.navbar{
+nav.navbar {
     background-color: $main-color;
 }
+  
+.font-2vh{
+    font-size: 2vh;
+}
+  
+.font-1-5vh{
+    font-size: 1.5vh;
+}
+  
+#about {
+    cursor: pointer;
+}
+  
+#help {
+    cursor: pointer;
+}
 
+div.display-none {
+    display: none !important;
+}
+  
+div.mc-quiz {
+    background-color: $bg-quiz;
+    font-size: 2vh;
+    height: 60vh;
+    width: 70vw;
+}
+  
 button.circle {
     background-color: $gray;
     border: none;
@@ -18,18 +46,10 @@ button.circle {
     height: 35px;
     margin: 4px 2px;
 }
-
-div.display-none{
-    display: none !important;
-}
-
-div.mc-quiz{
-    background-color: #e7e6e6;
-    font-size: 20px;
-    height: 60vh;
-    width: 70vw;
-}
-
+  
 button.active {
     background-color: $main-color !important;
 }
+  
+  /*# sourceMappingURL=style.css.map */
+  
