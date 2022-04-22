@@ -9,6 +9,7 @@ const questions = [ ["Question1?",["choice1.1","choice1.2","choice1.3"]],
 ];
 
 var page_no = 0;
+const visited = [1,0,0];
 var total_ans = 0;
 const choice_flag = new Array(questions.length).fill(0);
 const ans_choice = new Array(questions.length);
@@ -32,40 +33,45 @@ const goto_form = () => {
 }
 
 const choose_video = (page) => {
-    page_no = page
-    if(page_no==3){
-        // toggle mc
-        
-        // document.querySelector('#show-mc').classList.toggle('display-none');
-        // var inside_ol = '';
-        // questions.forEach(function(question, q_no){
-        //     inside_ol+='<li class="mb-3">'+question[0];
-        //     question[1].forEach(function(choice, c_no){
-        //         const name= '"q-' + q_no  + '"';
-        //         const id= '"ans-' + q_no +"." + c_no + '"';
-        //         const value= '"'+choice+'"';
-        //         inside_ol+='<div class="form-check"><input class="form-check-input" type="radio" onclick="chooseChoice()" name=' + name + ' id=' + id + ' value='+value+'><label class="form-check-label" for='+ id + '>';
-        //         inside_ol+=choice;
-        //         inside_ol+='</label></div>';
-        //     })
-        //     inside_ol+='</li>';
-        // });
-        // document.querySelector('ol').innerHTML=inside_ol;
-        // document.querySelector('#show-video').classList.toggle('display-none');
-
-    }else{
-        document.querySelector('#video').setAttribute("src",url[page_no]);
-
-        // btn id btn1, btn2, btn3
-        document.querySelector('#btn'+ ((page_no)%3    +1 )).classList.add('active')
-        document.querySelector('#btn'+ (((page_no+1)%3) +1 )).classList.remove('active')
-        document.querySelector('#btn'+ (((page_no+2)%3) +1 )).classList.remove('active')
+    if(visited[page]==1) { // only allowed visited page
+        page_no = page
+        if(page_no<3){
+            document.querySelector('#video').setAttribute("src",url[page_no]);
+            // btn id btn1, btn2, btn3
+            for( var i = 0; i<3 ; i++ ){
+                if( visited[i]==1 )
+                    document.querySelector('#btn'+ (i%3 +1) ).classList.add('active')
+                else
+                    document.querySelector('#btn'+ (i%3 +1) ).classList.remove('active')
+            }
+        }else {
+            // toggle mc
+            
+            // document.querySelector('#show-mc').classList.toggle('display-none');
+            // var inside_ol = '';
+            // questions.forEach(function(question, q_no){
+            //     inside_ol+='<li class="mb-3">'+question[0];
+            //     question[1].forEach(function(choice, c_no){
+            //         const name= '"q-' + q_no  + '"';
+            //         const id= '"ans-' + q_no +"." + c_no + '"';
+            //         const value= '"'+choice+'"';
+            //         inside_ol+='<div class="form-check"><input class="form-check-input" type="radio" onclick="chooseChoice()" name=' + name + ' id=' + id + ' value='+value+'><label class="form-check-label" for='+ id + '>';
+            //         inside_ol+=choice;
+            //         inside_ol+='</label></div>';
+            //     })
+            //     inside_ol+='</li>';
+            // });
+            // document.querySelector('ol').innerHTML=inside_ol;
+            // document.querySelector('#show-video').classList.toggle('display-none');
+            
+        }
     }
 }
 
 const next_video = () => {
     page_no++;
     if(page_no < 3){
+        visited[page_no]=1
         choose_video(page_no);
     }else{
         goto_form();
